@@ -2,10 +2,11 @@ package com.techelevator;
 
 public class Candy extends Items {
 
+	String sound = "Munch Munch, Yum!";
+
 	@Override
-	public void getSound() {
-		// TODO Auto-generated method stub
-		
+	public String getSound() {
+		return sound;
 	}
 
 }

@@ -14,6 +14,6 @@ abstract class Items {
 		return itemName;
 	}
 	
-	abstract public void getSound();
+	abstract public String getSound();
 
 }
