@@ -31,6 +31,8 @@ public class VendingMachine {
 
 	public void vend(String key) {
 
+		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
+		itemsInTheMachine.get(key).remove(0);
 	}
 
 	public void feedMoney(BigDecimal amountInserted) {
@@ -71,7 +73,6 @@ public class VendingMachine {
 				System.out.print(slotItems.get(0).getItemName() + "\t");
 				System.out.print("(" + slotItems.size() + ")");
 				System.out.println();
-
 			}
 
 		}
