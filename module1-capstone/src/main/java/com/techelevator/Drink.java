@@ -1,10 +1,15 @@
 package com.techelevator;
 public class Drink extends Items {
 
+	public Drink(String name) {
+		super(name);
+	}
+
+	String sound = "Glug Glug, Yum!";
+
 	@Override
-	public void getSound() {
-		// TODO Auto-generated method stub
-		
+	public String getSound() {
+		return sound;
 	}
 
 }

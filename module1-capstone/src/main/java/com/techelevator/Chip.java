@@ -2,10 +2,15 @@ package com.techelevator;
 
 public class Chip extends Items {
 
+	public Chip(String name) {
+		super(name);
+	}
+
+	String sound = "Crunch Crunch, Yum!";
+
 	@Override
-	public void getSound() {
-		// TODO Auto-generated method stub
-		
+	public String getSound() {
+		return sound;
 	}
 
 }

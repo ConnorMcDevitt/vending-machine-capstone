@@ -1,10 +1,14 @@
 package com.techelevator;
 public class Gum extends Items {
 
-	@Override
-	public void getSound() {
-		// TODO Auto-generated method stub
-		
+	public Gum(String name) {
+		super(name);
 	}
 
+	String sound = "Chew Chew, Yum!";
+
+	@Override
+	public String getSound() {
+		return sound;
+	}
 }
