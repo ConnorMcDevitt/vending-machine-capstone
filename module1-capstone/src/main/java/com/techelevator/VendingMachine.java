@@ -8,7 +8,7 @@ import java.util.Map;
 public class VendingMachine {
 
 	private Map<String, List<Items>> itemsInTheMachine;
-	private BigDecimal availableFunds;
+	private BigDecimal availableFunds = new BigDecimal(0);
 
 	public boolean isInStock(String key) {
 		if (itemsInTheMachine.get(key).size() > 0) {
