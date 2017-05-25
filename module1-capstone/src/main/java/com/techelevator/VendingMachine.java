@@ -65,7 +65,7 @@ public class VendingMachine {
 		
 	
 		
-		if(itemsInTheMachine.isEmpty()) {
+		if(itemsInTheMachine == null) {
 			System.out.println("\nThe machine is empty.\n");
 			return;
 		}
@@ -79,6 +79,7 @@ public class VendingMachine {
 				
 				System.out.print(key + "\t");
 				System.out.print(slotItems.get(0).getItemName()+"\t");
+				System.out.print("$"+slotItems.get(0).getPrice()+"\t");
 				System.out.print("(" + slotItems.size() + ")");
 				System.out.println();
 				

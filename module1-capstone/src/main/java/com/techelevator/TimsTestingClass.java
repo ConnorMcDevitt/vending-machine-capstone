@@ -14,6 +14,8 @@ public class TimsTestingClass {
 		
 		vm.displayItems();
 		
+		System.out.println(vm.isInStock("A1"));
+		
 		
 //	
 //	BigDecimal amount1 = new BigDecimal("10.00");
