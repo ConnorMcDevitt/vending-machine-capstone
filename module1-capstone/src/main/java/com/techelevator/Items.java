@@ -7,8 +7,9 @@ abstract class Items {
 	BigDecimal price;
 	String itemName;
 	
-	public Items(String name) {
+	public Items(String name, BigDecimal price) {
 		itemName = name;
+		this.price = price;
 	}
 	
 	public BigDecimal getPrice() {
