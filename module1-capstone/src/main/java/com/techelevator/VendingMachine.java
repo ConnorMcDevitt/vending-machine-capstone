@@ -79,4 +79,8 @@ public class VendingMachine {
 
 		}
 	}
+	
+	public BigDecimal getAvailableFunds() {
+		return availableFunds;
+	}
 }
