@@ -63,7 +63,7 @@ public class VendingMachine {
 		System.out.println();
 		
 		
-		// Look at all slots, then pull out the LIST of items in each slot
+	
 		
 		if(itemsInTheMachine.isEmpty()) {
 			System.out.println("\nThe machine is empty.\n");
@@ -84,10 +84,13 @@ public class VendingMachine {
 				
 			}
 			
-		}
+		}}}
+
+	
+	
+	
 		
-		
-	}
+	
 	
 	
 	
@@ -95,4 +98,4 @@ public class VendingMachine {
 	
 	
 
-}
+
