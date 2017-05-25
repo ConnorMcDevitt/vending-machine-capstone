@@ -11,21 +11,25 @@ public class VendingMachine {
 	
 	
 	public boolean isInStock(String key) {
-		
-		return false;
+		if (itemsInTheMachine.get(key).size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-	
-	
+
 	public boolean canPurchase(String key) {
+		if (itemsInTheMachine.get(key).get(0).getPrice().doubleValue() > availableFunds.doubleValue()){
+			return false;
+		}
 		
-		
-		return false;
+		return true;
 	}
  	
 	
 	public void vend(String key) {
 		
-		// will decrease available funds
+	
 		
 	}
 	

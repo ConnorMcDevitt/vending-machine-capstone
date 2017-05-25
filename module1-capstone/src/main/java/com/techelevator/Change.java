@@ -17,7 +17,6 @@ public class Change {
 		BigDecimal numNickles = BigDecimal.ZERO;
 		
 		
-		
 		while (difference.compareTo(BigDecimal.ZERO) > 0){
 		if (difference.doubleValue() >= quarter.doubleValue()){
 			difference = difference.subtract(quarter);
