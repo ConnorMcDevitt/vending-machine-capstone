@@ -24,7 +24,7 @@ public class LoggerTest {
 	
 	@Before	
 	public void setUp() throws Exception {
-		logFile = new File("/Users/timothynevits/workspace/team6-java-module1-capstone/module1-capstone/Log.txt");
+		logFile = new File("Log.txt");
 		bd1 = new BigDecimal("5.00");
 		bd2 = new BigDecimal("10.00");
 		bd3 = new BigDecimal("7.21");
@@ -39,11 +39,11 @@ public class LoggerTest {
 
 	@Test
 	public void testSuccessfullyCreatesAndWritesToNewFile() throws IOException {
-		sut.log("Deposit Money",bd1,bd2);
+		sut.log("FED MONEY",bd1,bd2);
 		assertTrue(logFile.exists());
 		scanner = new Scanner(logFile);
 		String line = scanner.nextLine();
-		String expectedString = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())) + "\t" + "Deposit Money" + "\t" + "$" + bd1 + "\t" + "$" + bd2;
+		String expectedString = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())) + "  FED MONEY              $5.00  $10.00";
 		assertEquals(expectedString,line);
 		scanner.close();
 		
@@ -52,18 +52,18 @@ public class LoggerTest {
 	
 	@Test
 	public void testSuccessfullyAppendsToAnExistingFile() throws IOException {
-		sut.log("Deposit Money",bd1,bd2);
+		sut.log("FED MONEY",bd1,bd2);
 		sut.log("CHEESE A1", bd3, bd4);
 		assertTrue(logFile.exists());
 		
 		scanner = new Scanner(logFile);
 		
 		String line = scanner.nextLine();
-		String expectedString = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())) + "\t" + "Deposit Money" + "\t" + "$" + bd1 + "\t" + "$" + bd2;
+		String expectedString = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())) + "  FED MONEY              $5.00  $10.00";
 		assertEquals(expectedString,line);
 		
 		String line2 = scanner.nextLine();
-		String expectedString2 = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())) + "\t" + "CHEESE A1" + "\t" + "$" + bd3 + "\t" + "$" + bd4;
+		String expectedString2 = (new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())) + "  CHEESE A1              $7.21  $12.14";
 		assertEquals(expectedString2,line2);
 		
 		scanner.close();

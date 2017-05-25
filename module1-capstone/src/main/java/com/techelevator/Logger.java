@@ -14,8 +14,11 @@ public class Logger {
 
 		// Prepare line of output
 
-		String dateString = new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date());
-		String textToLog = dateString + "\t" + event + "\t" + "$" + start.toString() + "\t" + "$" + finish.toString();
+		StringBuilder logEntry = new StringBuilder();			
+		logEntry.append(String.format("%-24s", new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())));
+		logEntry.append(String.format("%-20s", event));
+		logEntry.append(String.format("%1$8s","$"+start.toString()));
+		logEntry.append(String.format("%1$8s","$"+finish.toString()));
 
 		// Define log file
 
@@ -29,7 +32,7 @@ public class Logger {
 			throw new IOException();
 		}
 
-		// Open log file for appendable writing
+		// Open log file for writing in append mode (not overwrite mode)
 
 		FileOutputStream f = new FileOutputStream(logFile,true);
 
@@ -37,7 +40,7 @@ public class Logger {
 
 			// make the log entry
 
-			pw.println(textToLog);
+			pw.println(logEntry);
 
 		}
 

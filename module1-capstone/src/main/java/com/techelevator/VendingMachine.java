@@ -53,33 +53,42 @@ public class VendingMachine {
 
 	}
 
-	public void displayItems() {
+	public String displayItems() {
 
-		System.out.println();
+		// Make sure the vending machine has been successfully loaded at least
+		// once.
 
-		if (itemsInTheMachine == null) {
+		if (itemsInTheMachine != null && itemsInTheMachine.size() != 0) {
 
-			System.out.println("\nThe machine is empty.\n");
-			return;
-		}
+			StringBuilder printedListOfItems = new StringBuilder();
 
-		for (String key : itemsInTheMachine.keySet()) {
+			for (String key : itemsInTheMachine.keySet()) {
 
-			List<Items> slotItems = itemsInTheMachine.get(key);
+				List<Items> slotItems = itemsInTheMachine.get(key);
 
-			// print out only available items
-			if (slotItems.size() > 0) {
+				// print out only available items
+				if (slotItems.size() > 0) {
 
-				System.out.print(key + "\t");
-				System.out.print(slotItems.get(0).getItemName() + "\t");
-				System.out.print("$" + slotItems.get(0).getPrice() + "\t");
-				System.out.print("(" + slotItems.size() + ")");
-				System.out.println();
+					String name = slotItems.get(0).getItemName();
+					String price = "$" + slotItems.get(0).getPrice().toString();
+					printedListOfItems.append(key + "  ");
+					printedListOfItems.append(String.format("%-20s", name));
+					printedListOfItems.append(String.format("%1$6s", price));
+					printedListOfItems.append("  (" + slotItems.size() + ")");
+					printedListOfItems.append("\n");
+
+				}
+
 			}
 
+			if (!printedListOfItems.toString().equals("")) {
+				return printedListOfItems.toString();
+			}
 		}
+
+		return "The vending machine is empty.";
 	}
-	
+
 	public BigDecimal getAvailableFunds() {
 		return availableFunds;
 	}
