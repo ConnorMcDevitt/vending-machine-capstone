@@ -72,6 +72,7 @@ public class VendingMachine {
 				System.out.print(key + "\t");
 				System.out.print(slotItems.get(0).getItemName()+"\n");
 				System.out.print("(" + slotItems.size() + ")");
+				System.out.println();
 				
 			}
 			
