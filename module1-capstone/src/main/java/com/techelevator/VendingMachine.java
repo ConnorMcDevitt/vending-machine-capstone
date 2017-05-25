@@ -57,7 +57,7 @@ public class VendingMachine {
 		
 		// Look at all slots, then pull out the LIST of items in each slot
 		
-		if(itemsInTheMachine.size()==0) {
+		if(itemsInTheMachine.isEmpty()) {
 			System.out.println("\nThe machine is empty.\n");
 			return;
 		}

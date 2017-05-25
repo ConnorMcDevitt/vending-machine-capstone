@@ -18,7 +18,7 @@ public class Import {
 	public void readCSVFile() throws FileNotFoundException {
 		String document = "";
 		String[] documentArray;
-		File f = new File("test.csv");
+		File f = new File("vendingmachine.csv");
 		try(Scanner s = new Scanner(f)) {
 		    while(s.hasNextLine()) {
 		        document += s.nextLine() + "\n";
