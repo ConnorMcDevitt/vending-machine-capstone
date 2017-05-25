@@ -1,10 +1,13 @@
 package com.techelevator;
+import static org.junit.Assert.*;
+
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,12 +42,11 @@ public class ImportTest {
 		testMap.put("B1", candyList);
 		testMap.put("C1", drinkList);
 		testMap.put("D1", gumList);
-		
 	}
 	
 	@Test
 	public void testAllComponents() throws FileNotFoundException {
-		assertEquals
+		assertEquals(testMap.size(), sut.stockMachine().size());
 	}
 
 }

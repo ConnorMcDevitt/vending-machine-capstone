@@ -15,7 +15,7 @@ public class Import {
 	String[] documentArray;
 	
 	
-	public void readCSVFile() throws FileNotFoundException {
+	public void readCSVFile() {
 		String document = "";
 		String[] documentArray;
 		File f = new File("vendingmachine.csv");
@@ -23,6 +23,9 @@ public class Import {
 		    while(s.hasNextLine()) {
 		        document += s.nextLine() + "\n";
 		    }
+		} catch (FileNotFoundException e) {
+			System.out.println("Was unable to locate file with name \"vendingmachine.csv\".");
+			e.printStackTrace();
 		}
 		documentArray = document.split("\n");
 		this.documentArray = documentArray;
