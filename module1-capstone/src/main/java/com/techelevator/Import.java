@@ -33,7 +33,7 @@ public class Import {
 		
 		for(String element : documentArray) {
 			
-			String[] elementArray = element.split("|");
+			String[] elementArray = element.split("\\|");
 			String tempKey = elementArray[0];
 			List<Items> tempList = new ArrayList<>();
 			BigDecimal bd = new BigDecimal(elementArray[2]);
@@ -83,7 +83,9 @@ public class Import {
 
 	
 	//Goes through each specific item in the machine and sets the length of its list to 5 and then returns a map (aligning with its key).
-	public Map<String, List<Items>> stockMachine() {
+	public Map<String, List<Items>> stockMachine() throws FileNotFoundException {
+		readCSVFile();
+		createMap();
 		return vendingMap;
 	}
 }
