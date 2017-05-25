@@ -7,6 +7,10 @@ abstract class Items {
 	BigDecimal price;
 	String itemName;
 	
+	public Items(String name) {
+		itemName = name;
+	}
+	
 	public BigDecimal getPrice() {
 		return price;
 	}
