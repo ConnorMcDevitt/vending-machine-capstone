@@ -1,13 +1,10 @@
 package com.techelevator;
-import static org.junit.Assert.assertEquals;
-
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,7 +44,7 @@ public class ImportTest {
 	
 	@Test
 	public void testAllComponents() throws FileNotFoundException {
-		assertEquals(testMap, sut.stockMachine());
+		assertEquals
 	}
 
 }
