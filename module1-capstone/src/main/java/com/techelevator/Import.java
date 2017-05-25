@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,23 +12,24 @@ import java.util.Scanner;
 public class Import {
 	
 	Map<String, List<Items>> vendingMap;
+	String[] documentArray;
 	
 	
-	public String[] readCSVFile() throws FileNotFoundException {
+	public void readCSVFile() throws FileNotFoundException {
 		String document = "";
 		String[] documentArray;
-		File f = new File("vendingmachine.csv");
+		File f = new File("test.csv");
 		try(Scanner s = new Scanner(f)) {
 		    while(s.hasNextLine()) {
 		        document += s.nextLine() + "\n";
 		    }
 		}
 		documentArray = document.split("\n");
-		return documentArray;
+		this.documentArray = documentArray;
 	}
 	
-	public void createMap(String[] documentArray) {
-		Map<String, List<Items>> vendingMap = new HashMap<>();
+	public void createMap() {
+		Map<String, List<Items>> vendingMap = new LinkedHashMap<>();
 		
 		for(String element : documentArray) {
 			
