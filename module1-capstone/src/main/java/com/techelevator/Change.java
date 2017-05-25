@@ -4,7 +4,10 @@ import java.math.BigDecimal;
 
 public class Change {
 
-	public String calculateChange(BigDecimal amount) {
+	BigDecimal totalChange;
+	
+	
+	public String calculateChange(BigDecimal differencePrice) {
 		BigDecimal quarter = new BigDecimal(0.25);
 		BigDecimal dime = new BigDecimal(0.10);
 		BigDecimal nickle = new BigDecimal(0.05);
@@ -14,26 +17,26 @@ public class Change {
 		
 		
 		
-		while (amount.doubleValue() >0.00){
-		if (amount.doubleValue() > quarter.doubleValue()){
-			amount.subtract(quarter);
+		while (differencePrice.doubleValue() >0.00){
+		if (differencePrice.doubleValue() > quarter.doubleValue()){
+			differencePrice.subtract(quarter);
 			numQuarters = numQuarters +1;
 			
 			
-		} else if (amount.doubleValue() > dime.doubleValue()){
-			amount.subtract(dime);
+		} else if (differencePrice.doubleValue() > dime.doubleValue()){
+			differencePrice.subtract(dime);
 			numDimes = numDimes +1;
 			
 		} else {
-			amount.subtract(nickle);
+			differencePrice.subtract(nickle);
 			numNickles = numNickles +1;
 			
 		}
 		}
 		
 		
-		BigDecimal totalChange = new BigDecimal(numQuarters * 0.25 + numDimes * 0.10 + numNickles * 0.05);
-		return "Your total change is: $" + totalChange.toString() + ": Quarters:" + numQuarters + ", Dimes:" + numDimes + ",  Nicles:" + numNickles;
+		totalChange = new BigDecimal(numQuarters * 0.25 + numDimes * 0.10 + numNickles * 0.05);
+		return "Your total change is: $" + totalChange.toString() + ": Quarters:" + numQuarters + ", Dimes:" + numDimes + ",  Nickes:" + numNickles;
 	}
 	
 
