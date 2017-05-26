@@ -24,6 +24,12 @@ public class Logger {
 	}
 	
 	
+	public void logChange(BigDecimal amountOfChangeGiven, BigDecimal initialBalance)  {
+		BigDecimal endingBalance = initialBalance.subtract(amountOfChangeGiven);
+		printToLogFile("DISPENSED CHANGE $"+amountOfChangeGiven,initialBalance,endingBalance);
+	}
+	
+	
 	private void printToLogFile(String event, BigDecimal start, BigDecimal finish) { //throws IOException {
 
 		// Prepare line of output
