@@ -45,8 +45,11 @@ public class ImportTest {
 	}
 	
 	@Test
-	public void testAllComponents() throws FileNotFoundException {
-		assertEquals("Potato Crisps", sut.stockMachine().get("A1").get(0));
+	public void testMapCreation() throws FileNotFoundException {
+		assertEquals("Potato Crisps", sut.stockMachine().get("A1").get(0).getItemName());
+		assertEquals("Triplemint", sut.stockMachine().get("D4").get(0).getItemName());
+		assertEquals(new BigDecimal(0.75), sut.stockMachine().get("D4").get(0).getPrice());
+		assertEquals(new BigDecimal(0.75), sut.stockMachine().get("A1").get(0).getPrice());
 	}
 
 }

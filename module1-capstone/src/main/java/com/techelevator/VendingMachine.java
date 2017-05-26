@@ -26,11 +26,10 @@ public class VendingMachine {
 
 	public String vend(String key) {
 		Logger logger = new Logger();
-
+		logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
 		String sound = itemsInTheMachine.get(key).get(0).getSound();
 		if(canPurchase(key) && isInStock(key)) {
-			logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
 			itemsInTheMachine.get(key).remove(0);
 		}
 		return sound;

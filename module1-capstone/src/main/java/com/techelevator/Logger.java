@@ -35,9 +35,8 @@ public class Logger {
 	
 	
 	
-	public void logChange(BigDecimal amountOfChangeGiven, BigDecimal initialBalance)  {
-		BigDecimal endingBalance = initialBalance.subtract(amountOfChangeGiven);
-		printToLogFile("DISPENSED CHANGE $"+amountOfChangeGiven,initialBalance,endingBalance);
+	public void logChange(BigDecimal availableFunds)  {
+		printToLogFile("DISPENSED CHANGE $"+availableFunds.toString(),availableFunds, new BigDecimal("0.00"));
 	}
 	
 	

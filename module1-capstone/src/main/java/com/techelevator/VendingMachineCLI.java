@@ -32,6 +32,7 @@ public class VendingMachineCLI {
 	}
 	
 	public void run() {
+		Logger logger = new Logger();
 		vm.refill();
 		//Original menu.
 		while(true) {
@@ -63,6 +64,7 @@ public class VendingMachineCLI {
 						menu.getChoiceForSpecificItem(vm);
 					} else if(purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 						Change change = new Change();
+						logger.logChange(vm.getAvailableFunds());
 						System.out.println(change.calculateChange(vm.getAvailableFunds()));
 						vm.resetAvailableFunds();
 						break;
