@@ -29,9 +29,9 @@ public class VendingMachine {
 		logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
 		String sound = itemsInTheMachine.get(key).get(0).getSound();
-		if(canPurchase(key) && isInStock(key)) {
+		//if(canPurchase(key) && isInStock(key)) {
 			itemsInTheMachine.get(key).remove(0);
-		}
+		//}
 		return sound;
 	}
 
