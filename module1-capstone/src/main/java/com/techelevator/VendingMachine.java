@@ -95,4 +95,11 @@ public class VendingMachine {
 	public Map<String, List<Items>> getItemsInTheMachine() {
 		return itemsInTheMachine;
 	}
+	
+	public void resetAvailableFunds(){
+		BigDecimal reset = new BigDecimal("0.00");
+		this.availableFunds = reset;
+		
+	}
+	
 }

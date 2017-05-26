@@ -64,6 +64,7 @@ public class VendingMachineCLI {
 					} else if(purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 						Change change = new Change();
 						System.out.println(change.calculateChange(vm.getAvailableFunds()));
+						vm.resetAvailableFunds();
 						break;
 					}
 				}
