@@ -24,6 +24,17 @@ public class Logger {
 	}
 	
 	
+	public void logOutOfStock(BigDecimal balance)  {
+		printToLogFile("Item unavailable.",balance,balance);
+	}
+	
+	public void notEnoughtMoney(BigDecimal balance)  {
+		printToLogFile("Insufficent funds.",balance,balance);
+	}
+	
+	
+	
+	
 	public void logChange(BigDecimal amountOfChangeGiven, BigDecimal initialBalance)  {
 		BigDecimal endingBalance = initialBalance.subtract(amountOfChangeGiven);
 		printToLogFile("DISPENSED CHANGE $"+amountOfChangeGiven,initialBalance,endingBalance);
