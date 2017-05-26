@@ -19,6 +19,8 @@ public class Import {
 		String document = "";
 		String[] documentArray;
 		File f = new File("vendingmachine.csv");
+		//Reads the file located on the user's computer with the name "vendingmachine.csv".
+		//Stores the entire document as a single string.
 		try(Scanner s = new Scanner(f)) {
 		    while(s.hasNextLine()) {
 		        document += s.nextLine() + "\n";
@@ -27,6 +29,8 @@ public class Import {
 			System.out.println("Was unable to locate file with name \"vendingmachine.csv\".");
 			e.printStackTrace();
 		}
+		//Splits the entire document string into an array, separated by each new line.
+		//Each new line in the csv file should represent invidividual items and their data.
 		documentArray = document.split("\n");
 		this.documentArray = documentArray;
 	}
@@ -36,11 +40,13 @@ public class Import {
 		
 		for(String element : documentArray) {
 			
+			//Splits each line into an array of length 3 with the first element representing the button (i.e. A1), second element (name of the product), and third element (the price of the item).
 			String[] elementArray = element.split("\\|");
 			String tempKey = elementArray[0];
 			List<Items> tempList = new ArrayList<>();
 			BigDecimal bd = new BigDecimal(elementArray[2]);
 			
+			//If the item's button starts with A, create a chip object
 			if(elementArray[0].startsWith("A")) {
 				
 				Chip chip = new Chip(elementArray[1], bd);
@@ -48,7 +54,8 @@ public class Import {
 					tempList.add(chip);
 				}
 				vendingMap.put(tempKey, tempList);
-				
+			
+			//If the item's button starts with B, create a candy object
 			} else if (elementArray[0].startsWith("B")) {
 				
 				Candy candy = new Candy(elementArray[1], bd);
@@ -56,7 +63,8 @@ public class Import {
 					tempList.add(candy);
 				}
 				vendingMap.put(tempKey, tempList);
-				
+			
+			//If the item's button starts with C, create a drink object	
 			} else if (elementArray[0].startsWith("C")) {
 				
 				Drink drink = new Drink(elementArray[1], bd);
@@ -64,7 +72,8 @@ public class Import {
 					tempList.add(drink);
 				}
 				vendingMap.put(tempKey, tempList);
-				
+			
+			//If the item's button starts with D, create a gum object	
 			} else if (elementArray[0].startsWith("D")) {
 				
 				Gum gum = new Gum(elementArray[1], bd);
@@ -73,19 +82,13 @@ public class Import {
 				}
 				vendingMap.put(tempKey, tempList);
 			}
-			
-			
-			
-			for(int i = 0; i < 5; i++) {
-			}
-			
 		}
 		this.vendingMap = vendingMap;
 	}
 	
 
 	
-	//Goes through each specific item in the machine and sets the length of its list to 5 and then returns a map (aligning with its key).
+	//Retrieves the map generated after reading the csv file and the actual creation of the map.
 	public Map<String, List<Items>> stockMachine() throws FileNotFoundException {
 		readCSVFile();
 		createMap();
