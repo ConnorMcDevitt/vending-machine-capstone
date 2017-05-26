@@ -1,10 +1,8 @@
 package com.techelevator;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,29 +19,10 @@ public class ImportTest {
 		sut = new Import();
 		sut.readCSVFile();
 		sut.createMap();
-//		testMap = new LinkedHashMap<>();
-//		List<Items> chipList = new ArrayList<>();
-//		List<Items> candyList = new ArrayList<>();
-//		List<Items> drinkList = new ArrayList<>();
-//		List<Items> gumList = new ArrayList<>();
-//		Chip chip = new Chip("Potato Crisps", new BigDecimal("3.05"));
-//		Candy candy = new Candy("Moonpie", new BigDecimal("1.80"));
-//		Drink drink = new Drink("Cola", new BigDecimal("1.25"));
-//		Gum gum = new Gum("U-Chews", new BigDecimal("0.85"));
-//		
-//		for(int i = 0; i < 5; i++) {
-//			chipList.add(chip);
-//			candyList.add(candy);
-//			drinkList.add(drink);
-//			gumList.add(gum);
-//		}
-//		
-//		testMap.put("A1", chipList);
-//		testMap.put("B1", candyList);
-//		testMap.put("C1", drinkList);
-//		testMap.put("D1", gumList);
 	}
 	
+	//This test gets at every component of a piece of the list in the map based on its key. Checking item name, price, and sound.
+	//This test simultaneously tests the getters within the Items class and its subclasses.
 	@Test
 	public void testMapCreation() throws FileNotFoundException {
 		assertEquals("Potato Crisps", sut.stockMachine().get("A1").get(0).getItemName());
