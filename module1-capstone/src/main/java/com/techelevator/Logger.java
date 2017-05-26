@@ -46,7 +46,7 @@ public class Logger {
 
 		StringBuilder logEntry = new StringBuilder();			
 		logEntry.append(String.format("%-24s", new SimpleDateFormat("MM/dd/YYYY hh:mm:ss a").format(new java.util.Date())));
-		logEntry.append(String.format("%-20s", event));
+		logEntry.append(String.format("%-30s", event));
 		logEntry.append(String.format("%1$8s","$"+start.toString()));
 		logEntry.append(String.format("%1$8s","$"+finish.toString()));
 
