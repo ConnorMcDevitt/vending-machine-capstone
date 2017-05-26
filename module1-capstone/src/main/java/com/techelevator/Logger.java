@@ -10,7 +10,27 @@ import java.text.SimpleDateFormat;
 
 public class Logger {
 
-	public void log(String event, BigDecimal start, BigDecimal finish) throws IOException {
+	
+	public void logPurchase(String slot, Items item, BigDecimal initialBalance) {
+		BigDecimal endingBalance = initialBalance.subtract(item.getPrice());
+		String event = item.getItemName() + "  " + slot;
+		printToLogFile(event,initialBalance,endingBalance);
+	}
+	
+	
+	public void logFeed(BigDecimal amountAdded, BigDecimal initialBalance)  {
+		BigDecimal endingBalance = initialBalance.add(amountAdded);
+		printToLogFile("FEED $"+amountAdded,initialBalance,endingBalance);
+	}
+	
+	
+	public void logChange(BigDecimal amountOfChangeGiven, BigDecimal initialBalance)  {
+		BigDecimal endingBalance = initialBalance.subtract(amountOfChangeGiven);
+		printToLogFile("DISPENSED CHANGE $"+amountOfChangeGiven,initialBalance,endingBalance);
+	}
+	
+	
+	private void printToLogFile(String event, BigDecimal start, BigDecimal finish) { //throws IOException {
 
 		// Prepare line of output
 
@@ -27,22 +47,29 @@ public class Logger {
 		// If log file does not exist, create it
 
 		if (!logFile.exists()) {
-			logFile.createNewFile();
+			
+			try {
+				logFile.createNewFile();
+			} catch (IOException e) {
+				System.out.println("\n***WARNING: UNABLE TO CREATE LOG FILE***\n");
+			}
+			
+			
 		} else if (logFile.exists() && logFile.isDirectory()) {
-			throw new IOException();
+			System.out.println("\n***WARNING: DIRECTORY WITH NAME \"Log.txt\" exists.***\n");
 		}
 
-		// Open log file for writing in append mode (not overwrite mode)
 
-		FileOutputStream f = new FileOutputStream(logFile,true);
-
-		try (PrintWriter pw = new PrintWriter(f)) {
+		try (FileOutputStream f = new FileOutputStream(logFile,true); 
+			PrintWriter pw = new PrintWriter(f)) {
 
 			// make the log entry
 
 			pw.println(logEntry);
 			pw.flush();
 
+		} catch (IOException e) {
+			System.out.println("\n***WARNING: LOG FILE HAS BEEN DELETED.  COULD NOT RECORD TRANSACTION.***\n");
 		}
 
 	}

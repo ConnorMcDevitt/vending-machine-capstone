@@ -26,16 +26,18 @@ public class VendingMachine {
 	}
 
 	public String vend(String key) {
-		//Logger logger = new Logger();
+		Logger logger = new Logger();
 
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
 		String sound = itemsInTheMachine.get(key).get(0).getSound();
-		//logger.log(itemsInTheMachine.get(key).get(0), availableFunds);
+		logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
 		itemsInTheMachine.get(key).remove(0);
 		return sound;
 	}
 
 	public void feedMoney(BigDecimal amountInserted) {
+		Logger logger = new Logger();
+		logger.logFeed(amountInserted, availableFunds);
 		availableFunds = availableFunds.add(amountInserted);
 		System.out.println("Sucessfully inserted: $" + amountInserted.toString());
 
