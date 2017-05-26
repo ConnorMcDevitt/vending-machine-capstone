@@ -90,7 +90,7 @@ public class Import {
 
 	
 	//Retrieves the map generated after reading the csv file and the actual creation of the map.
-	public Map<String, List<Items>> stockMachine() throws FileNotFoundException {
+	public Map<String, List<Items>> stockMachine() {
 		readCSVFile();
 		createMap();
 		return vendingMap;

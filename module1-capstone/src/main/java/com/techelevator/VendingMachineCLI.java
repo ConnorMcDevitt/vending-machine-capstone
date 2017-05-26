@@ -24,7 +24,7 @@ public class VendingMachineCLI {
 														FEED_MENU_OPTION_FIVE, FEED_MENU_OPTION_TEN, FEED_MENU_OPTION_EXIT };
 	
 	private Menu menu;
-	private VendingMachine vm;
+	private VendingMachine vm = new VendingMachine();
 	
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -37,8 +37,9 @@ public class VendingMachineCLI {
 			String choice = (String)menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
 			
 			if(choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
-				vm.displayItems();
+				System.out.println(vm.displayItems());
 			} else if(choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
+				//Purchase Menu
 				while(true) {
 					System.out.println("Current Balance is $" + vm.getAvailableFunds());
 					String purchaseChoice = (String)menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
@@ -52,13 +53,15 @@ public class VendingMachineCLI {
 							if(feedChoice.equals(FEED_MENU_OPTION_EXIT)) {
 								break;
 							}
-							vm.feedMoney(new BigDecimal(feedChoice));
+							vm.feedMoney(new BigDecimal(feedChoice.replace("$", "")));
 						}
 					} else if(purchaseChoice.equals(PURCHASE_MENU_OPTION_BUY_ITEM)) {
 						System.out.println("Current Balance is $" + vm.getAvailableFunds());
 						System.out.println(vm.displayItems());
 						System.out.println("Please enter your selection or enter 0 to exit: ");
 						menu.getChoiceForSpecificItem(vm);
+						break;
+					} else if(purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
 						break;
 					}
 				}

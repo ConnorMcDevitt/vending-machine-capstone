@@ -1,6 +1,5 @@
 package com.techelevator;
 
-import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +28,11 @@ public class VendingMachine {
 	}
 
 	public String vend(String key) {
+		Logger logger = new Logger();
 
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
 		String sound = itemsInTheMachine.get(key).get(0).getSound();
+		logger.log(itemsInTheMachine.get(key).get(0), availableFunds);
 		itemsInTheMachine.get(key).remove(0);
 		return sound;
 	}
@@ -45,13 +46,12 @@ public class VendingMachine {
 	public void refill() {
 
 		Import im = new Import();
-		try {
+//		try {
 			itemsInTheMachine = im.stockMachine();
-		} catch (FileNotFoundException e) {
-			System.out.println("Unable to locate file.");
-			e.printStackTrace();
-		}
-
+//		} catch (FileNotFoundException e) {
+//			System.out.println("Unable to locate file.");
+//			e.printStackTrace();
+//		}
 	}
 
 	public String displayItems() {
