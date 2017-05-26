@@ -91,4 +91,8 @@ public class VendingMachine {
 	public BigDecimal getAvailableFunds() {
 		return availableFunds;
 	}
+	
+	public Map<String, List<Items>> getItemsInTheMachine() {
+		return itemsInTheMachine;
+	}
 }
