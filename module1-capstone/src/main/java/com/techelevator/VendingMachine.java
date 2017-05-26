@@ -21,7 +21,6 @@ public class VendingMachine {
 		if (itemsInTheMachine.get(key).get(0).getPrice().doubleValue() > availableFunds.doubleValue()) {
 			return false;
 		}
-
 		return true;
 	}
 
@@ -30,8 +29,14 @@ public class VendingMachine {
 
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
 		String sound = itemsInTheMachine.get(key).get(0).getSound();
-		logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
-		itemsInTheMachine.get(key).remove(0);
+		if(canPurchase(key) && isInStock(key)) {
+			logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
+			itemsInTheMachine.get(key).remove(0);
+		} else if(!isInStock(key)) {
+			logger.logOutOfStock(availableFunds);
+		} else if(!canPurchase(key)) {
+			logger.logEnoughMoney(availableFunds);
+		}
 		return sound;
 	}
 
