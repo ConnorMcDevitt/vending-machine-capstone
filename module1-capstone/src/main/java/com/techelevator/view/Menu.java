@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import com.techelevator.Logger;
 import com.techelevator.VendingMachine;
 
 public class Menu {
@@ -44,6 +45,7 @@ public class Menu {
 	}
 	
 	public void getChoiceForSpecificItem(VendingMachine vm) {
+		Logger logger = new Logger();
 		String userInput = in.nextLine();
 		String selectedOption = userInput.toUpperCase();
 		if(vm.getItemsInTheMachine().containsKey(selectedOption) || selectedOption == "0") {
@@ -52,8 +54,10 @@ public class Menu {
 			} else if(vm.isInStock(selectedOption) && vm.canPurchase(selectedOption)) {
 				System.out.println(vm.vend(selectedOption));
 			} else if (!vm.isInStock(selectedOption)) {
+				logger.logOutOfStock(vm.getAvailableFunds());
 				System.out.println("\nThe requested item is not in stock.\n");
 			} else if (!vm.canPurchase(selectedOption)) {
+				logger.notEnoughMoney(vm.getAvailableFunds());
 				System.out.println("\nYou do not have enough money.\n");
 			} 
 		} else {

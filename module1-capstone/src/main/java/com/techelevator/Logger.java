@@ -28,7 +28,7 @@ public class Logger {
 		printToLogFile("Item unavailable.",balance,balance);
 	}
 	
-	public void notEnoughtMoney(BigDecimal balance)  {
+	public void notEnoughMoney(BigDecimal balance)  {
 		printToLogFile("Insufficent funds.",balance,balance);
 	}
 	

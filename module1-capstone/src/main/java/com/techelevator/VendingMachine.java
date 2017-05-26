@@ -32,10 +32,6 @@ public class VendingMachine {
 		if(canPurchase(key) && isInStock(key)) {
 			logger.logPurchase(key, itemsInTheMachine.get(key).get(0), availableFunds);
 			itemsInTheMachine.get(key).remove(0);
-		} else if(!isInStock(key)) {
-			logger.logOutOfStock(availableFunds);
-		} else if(!canPurchase(key)) {
-			logger.logEnoughMoney(availableFunds);
 		}
 		return sound;
 	}
