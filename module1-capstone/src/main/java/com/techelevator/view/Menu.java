@@ -5,6 +5,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import com.techelevator.VendingMachine;
+
 public class Menu {
 
 	private PrintWriter out;
@@ -39,6 +41,22 @@ public class Menu {
 			out.println("\n*** "+userInput+" is not a valid option ***\n");
 		}
 		return choice;
+	}
+	
+	public void getChoiceForSpecificItem(VendingMachine vm) {
+		String userInput = in.nextLine();
+		String selectedOption = userInput;
+		if(selectedOption.equals("0")) {
+			return;
+		} else if(vm.isInStock(selectedOption) && vm.canPurchase(selectedOption)) {
+			System.out.println(vm.vend(selectedOption));
+		} else if (!vm.isInStock(selectedOption)) {
+			vm.isInStock(selectedOption);
+		} else if (!vm.canPurchase(selectedOption)) {
+			vm.canPurchase(selectedOption);
+		} else {
+			out.println("\n*** "+userInput+" is not a valid option ***\n");
+		}
 	}
 
 	private void displayMenuOptions(Object[] options) {

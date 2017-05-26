@@ -28,6 +28,7 @@ public class Import {
 		} catch (FileNotFoundException e) {
 			System.out.println("Was unable to locate file with name \"vendingmachine.csv\".");
 			e.printStackTrace();
+			System.exit(1);
 		}
 		//Splits the entire document string into an array, separated by each new line.
 		//Each new line in the csv file should represent invidividual items and their data.

@@ -11,12 +11,11 @@ public class VendingMachine {
 	private BigDecimal availableFunds = new BigDecimal(0);
 
 	public boolean isInStock(String key) {
-		if (itemsInTheMachine.get(key).size() > 0) {
-			System.out.println("The requested item is in stock.");
-			return true;
-		} else {
+		if (itemsInTheMachine.get(key).size() == 0) {
 			System.out.println("The requested item is not in stock.");
 			return false;
+		} else {
+			return true;
 		}
 	}
 
@@ -29,10 +28,12 @@ public class VendingMachine {
 		return true;
 	}
 
-	public void vend(String key) {
+	public String vend(String key) {
 
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
+		String sound = itemsInTheMachine.get(key).get(0).getSound();
 		itemsInTheMachine.get(key).remove(0);
+		return sound;
 	}
 
 	public void feedMoney(BigDecimal amountInserted) {
