@@ -41,6 +41,7 @@ public class Logger {
 			// make the log entry
 
 			pw.println(logEntry);
+			pw.flush();
 
 		}
 
