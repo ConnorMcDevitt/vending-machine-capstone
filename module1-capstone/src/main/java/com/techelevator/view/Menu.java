@@ -45,15 +45,15 @@ public class Menu {
 	
 	public void getChoiceForSpecificItem(VendingMachine vm) {
 		String userInput = in.nextLine();
-		String selectedOption = userInput;
+		String selectedOption = userInput.toUpperCase();
 		if(selectedOption.equals("0")) {
 			return;
 		} else if(vm.isInStock(selectedOption) && vm.canPurchase(selectedOption)) {
 			System.out.println(vm.vend(selectedOption));
 		} else if (!vm.isInStock(selectedOption)) {
-			vm.isInStock(selectedOption);
+			System.out.println("\nThe requested item is not in stock.\n");
 		} else if (!vm.canPurchase(selectedOption)) {
-			vm.canPurchase(selectedOption);
+			System.out.println("\nYou do not have enough money.\n");
 		} else {
 			out.println("\n*** "+userInput+" is not a valid option ***\n");
 		}

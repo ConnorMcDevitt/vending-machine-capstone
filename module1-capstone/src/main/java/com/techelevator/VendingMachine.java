@@ -11,7 +11,6 @@ public class VendingMachine {
 
 	public boolean isInStock(String key) {
 		if (itemsInTheMachine.get(key).size() == 0) {
-			System.out.println("The requested item is not in stock.");
 			return false;
 		} else {
 			return true;
@@ -20,7 +19,6 @@ public class VendingMachine {
 
 	public boolean canPurchase(String key) {
 		if (itemsInTheMachine.get(key).get(0).getPrice().doubleValue() > availableFunds.doubleValue()) {
-			System.out.println("You cannot purchase that item.");
 			return false;
 		}
 
@@ -28,18 +26,18 @@ public class VendingMachine {
 	}
 
 	public String vend(String key) {
-		Logger logger = new Logger();
+		//Logger logger = new Logger();
 
 		availableFunds = availableFunds.subtract(itemsInTheMachine.get(key).get(0).getPrice());
 		String sound = itemsInTheMachine.get(key).get(0).getSound();
-		logger.log(itemsInTheMachine.get(key).get(0), availableFunds);
+		//logger.log(itemsInTheMachine.get(key).get(0), availableFunds);
 		itemsInTheMachine.get(key).remove(0);
 		return sound;
 	}
 
 	public void feedMoney(BigDecimal amountInserted) {
 		availableFunds = availableFunds.add(amountInserted);
-		System.out.println("Sucessfully inserted: $" + amountInserted.doubleValue());
+		System.out.println("Sucessfully inserted: $" + amountInserted.toString());
 
 	}
 

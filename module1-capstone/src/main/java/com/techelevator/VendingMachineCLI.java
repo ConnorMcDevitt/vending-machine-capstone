@@ -8,8 +8,9 @@ public class VendingMachineCLI {
 
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
+	private static final String MAIN_MENU_OPTION_EXIT = "EXIT";
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS,
-													   MAIN_MENU_OPTION_PURCHASE };
+													   MAIN_MENU_OPTION_PURCHASE, MAIN_MENU_OPTION_EXIT };
 	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";
 	private static final String PURCHASE_MENU_OPTION_BUY_ITEM = "Buy Item";
 	private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
@@ -41,13 +42,13 @@ public class VendingMachineCLI {
 			} else if(choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				//Purchase Menu
 				while(true) {
-					System.out.println("Current Balance is $" + vm.getAvailableFunds());
+					System.out.println("\nCurrent Balance is $" + vm.getAvailableFunds());
 					String purchaseChoice = (String)menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS);
 					
 					if(purchaseChoice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)) {
 						//Feed Money Menu
 						while(true) {
-							System.out.println("Current Balance is $" + vm.getAvailableFunds());
+							System.out.println("\nCurrent Balance is $" + vm.getAvailableFunds());
 							String feedChoice = (String)menu.getChoiceFromOptions(FEED_MENU_OPTIONS);
 							
 							if(feedChoice.equals(FEED_MENU_OPTION_EXIT)) {
@@ -56,15 +57,18 @@ public class VendingMachineCLI {
 							vm.feedMoney(new BigDecimal(feedChoice.replace("$", "")));
 						}
 					} else if(purchaseChoice.equals(PURCHASE_MENU_OPTION_BUY_ITEM)) {
-						System.out.println("Current Balance is $" + vm.getAvailableFunds());
+						System.out.println("\nCurrent Balance is $" + vm.getAvailableFunds());
 						System.out.println(vm.displayItems());
-						System.out.println("Please enter your selection or enter 0 to exit: ");
+						System.out.println("\nPlease enter your selection or enter 0 to exit: ");
 						menu.getChoiceForSpecificItem(vm);
-						break;
 					} else if(purchaseChoice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)) {
+						Change change = new Change();
+						System.out.println(change.calculateChange(vm.getAvailableFunds()));
 						break;
 					}
 				}
+			} else if(choice.equals(MAIN_MENU_OPTION_EXIT)) {
+				break;
 			}
 		}
 	}
