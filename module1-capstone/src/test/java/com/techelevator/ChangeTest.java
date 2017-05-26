@@ -1,3 +1,4 @@
+package com.techelevator;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
