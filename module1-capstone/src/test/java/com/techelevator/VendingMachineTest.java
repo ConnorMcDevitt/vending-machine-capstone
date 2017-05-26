@@ -2,6 +2,8 @@ package com.techelevator;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,10 +65,11 @@ public class VendingMachineTest {
 				"D3  Chiclets             $0.75  (5)\n" +
 				"D4  Triplemint           $0.75  (5)\n";
 		sut.refill();
-		for(int i = 1; i<=5; i++) {
+		sut.feedMoney(new BigDecimal("10.00"));
+		for (int i = 5; i > 0; i--) {
 			sut.vend("A2");
 		}
-		assertEquals(expectedOutput,sut.displayItems());
+		assertEquals(expectedOutput, sut.displayItems());
 		
 	}
 	
